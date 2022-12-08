@@ -415,10 +415,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: 
+  sourceBankPath: Assets/FMOD/Desktop
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -452,20 +452,14 @@ MonoBehaviour:
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131593
-  HideSetupWizard: 0
+  HideSetupWizard: 1
   LastEventReferenceScanVersion: 131593
   Platforms:
-  - {fileID: -3138326126639886347}
-  - {fileID: 4750498853118023772}
-  - {fileID: -65142435833422371}
-  - {fileID: 1458514484793149231}
-  - {fileID: 3111303555513230687}
-  - {fileID: -4227555223290735572}
-  - {fileID: -199195769286463944}
-  - {fileID: 2047922079383281321}
   - {fileID: -8314208228543101099}
-  - {fileID: 8157320095239190093}
   - {fileID: -1676722997667776504}
+  - {fileID: -65142435833422371}
+  - {fileID: 2047922079383281321}
+  - {fileID: 8157320095239190093}
   MigratedPlatforms: 0c000000150000000b0000000a00000009000000120000000800000005000000060000000200000001000000
 --- !u!114 &1458514484793149231
 MonoBehaviour:
