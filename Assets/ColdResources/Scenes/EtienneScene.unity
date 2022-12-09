@@ -155,11 +155,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1164275577
+      Data2: 1194013280
+      Data3: -1814626371
+      Data4: -989715175
+    Path: event:/Test Integration
   Event: 
   PlayEvent: 1
   StopEvent: 0
@@ -168,8 +168,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &916627391
 Transform:
   m_ObjectHideFlags: 0
