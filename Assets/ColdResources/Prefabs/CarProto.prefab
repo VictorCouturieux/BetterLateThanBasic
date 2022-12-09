@@ -341,12 +341,12 @@ MonoBehaviour:
   springStrength: 50
   springDamper: 2
   springOffsef: 1.5
-  frontGripFactor: 30
-  rearGripFactor: 10
-  tireMass: 0.1
-  carTopSpeed: 20
+  frontGripFactor: 40
+  rearGripFactor: 40
+  tireMass: 0.01
+  carTopSpeed: 25
   drag: 3
-  speed: 5
+  speed: 25
   powerCurve:
     serializedVersion: 2
     m_Curve:

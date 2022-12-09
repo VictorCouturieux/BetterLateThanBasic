@@ -7,6 +7,7 @@ public class CarController : MonoBehaviour
 {
     [Header("place front wheels then rear wheel in this order inside the list")]
     [SerializeField] private List<Transform> tireTransforms;
+    
     [Space]
     [Header("suspension setup")]
     [SerializeField] private float springStrength = 50;
@@ -20,13 +21,13 @@ public class CarController : MonoBehaviour
     [SerializeField] private float tireMass = 1;
 
     [Space] [Header("acceleration setup")] 
-    [SerializeField] private float carTopSpeed = 10;
+    [SerializeField] private float carTopSpeed = 15;
     [SerializeField] private float drag = 3;
-    [SerializeField] private float speed = 10;
+    [SerializeField] private float speed = 15;
     [SerializeField] private AnimationCurve powerCurve;
 
     [Space] [Header("rotation angle setup")] 
-    [SerializeField] private float maxAngleRotation = 40;
+    [SerializeField] private float maxWheelAngle = 30;
     
     private Rigidbody rb;
     private float forwardInput;
@@ -46,7 +47,7 @@ public class CarController : MonoBehaviour
             bool rayDidHit = Physics.Raycast(tireTransforms[i].position, downDir, out RaycastHit tireRay, 20);
             if (i < 2)
             {
-                tireTransforms[i].localRotation = Quaternion.Euler(0,rightInput * maxAngleRotation,0);
+                tireTransforms[i].localRotation = Quaternion.Euler(0,rightInput * maxWheelAngle,0);
                 tireGripFactor = frontGripFactor;
             }
             else  tireGripFactor = rearGripFactor;
@@ -116,7 +117,7 @@ public class CarController : MonoBehaviour
                 //acceleration torque
                 if (Mathf.Abs(forwardInput) > 0)
                 {
-                    rb.drag = .5f;
+                    rb.drag = .3f;
                     //forward speed of the car (in the direction of driving)
                     float carSpeed = Vector3.Dot( transform.forward, rb.velocity);
                     
@@ -137,8 +138,7 @@ public class CarController : MonoBehaviour
             }
         }
     }
-    
-    
+
     private void OnMoveForward(InputValue value)
     {
         forwardInput = value.Get<float>();
