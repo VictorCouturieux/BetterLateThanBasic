@@ -18,12 +18,19 @@ public class CarController : MonoBehaviour
     [SerializeField] private float frontGripFactor = .30f;
     [SerializeField] private float rearGripFactor = .5f;
     [SerializeField] private float tireMass = 1;
-    [Space]
-    [Header("acceleration setup")]
 
+    [Space] [Header("acceleration setup")] 
+    [SerializeField] private float carTopSpeed = 10;
+    [SerializeField] private float drag = 3;
+    [SerializeField] private float speed = 10;
+    [SerializeField] private AnimationCurve powerCurve;
+
+    [Space] [Header("rotation angle setup")] 
+    [SerializeField] private float maxAngleRotation = 40;
     
     private Rigidbody rb;
-    private Vector3 moveInput;
+    private float forwardInput;
+    private float rightInput;
     private float tireGripFactor;
     private void Start()
     {
@@ -35,12 +42,20 @@ public class CarController : MonoBehaviour
     {
         for (int i = 0; i < tireTransforms.Count; i++)
         {
-            Vector3 downDir = transform.TransformVector(-transform.up);
-            bool rayDidHit = Physics.Raycast(tireTransforms[i].position, downDir, out RaycastHit tireRay, Mathf.Infinity);
+            Vector3 downDir = -Vector3.up;
+            bool rayDidHit = Physics.Raycast(tireTransforms[i].position, downDir, out RaycastHit tireRay, 20);
+            if (i < 2)
+            {
+                tireTransforms[i].localRotation = Quaternion.Euler(0,rightInput * maxAngleRotation,0);
+                tireGripFactor = frontGripFactor;
+            }
+            else  tireGripFactor = rearGripFactor;
             
             //suspension force
             if (rayDidHit)
             {
+                if (Vector3.Angle(tireTransforms[i].up,tireRay.normal) > 60) return;
+
                 //world-space direction of the spring force
                 Vector3 springDir = tireTransforms[i].up;
                 
@@ -51,7 +66,7 @@ public class CarController : MonoBehaviour
                 float offset = springOffsef - tireRay.distance;
                 
                 //calculate velocity along the spring direction
-                //note that springDir is a unit vector, so this return the magnitude of of tireWorldVel
+                //note that springDir is a unit vector, so this return the magnitude of tireWorldVel
                 //as projected onto springDir
                 float vel = Vector3.Dot(springDir, tireWorldVel);
                 
@@ -63,9 +78,6 @@ public class CarController : MonoBehaviour
                 
                 Debug.DrawRay(tireTransforms[i].position, springDir * vel, Color.green);
             }
-            
-            if (i <= 2) tireGripFactor = frontGripFactor;
-            else  tireGripFactor = rearGripFactor;
             
             //steering force
             if (rayDidHit)
@@ -92,14 +104,48 @@ public class CarController : MonoBehaviour
                 //Force = Mass * Acceleration, so multiply by the mass of the tire and apply it as a force
                 rb.AddForceAtPosition(steeringDir * tireMass * desiredAccel, tireTransforms[i].position);
 
-                //Debug.DrawRay(tireTransforms[i].position, downDir * tireRay.distance, Color.red);
+                Debug.DrawRay(tireTransforms[i].position, steeringDir * steeringVel, Color.red);
+            }
+            
+            //acceleration / braking
+            if (rayDidHit && i < 2)
+            {
+                //world-space direction of the acceleration/braking force
+                Vector3 accelDir = tireTransforms[i].forward;
+                
+                //acceleration torque
+                if (Mathf.Abs(forwardInput) > 0)
+                {
+                    rb.drag = .5f;
+                    //forward speed of the car (in the direction of driving)
+                    float carSpeed = Vector3.Dot( transform.forward, rb.velocity);
+                    
+                    //normalized car speed
+                    float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(carSpeed) / carTopSpeed);
+                    
+                    //aviable torque
+                    float aviableTorque = powerCurve.Evaluate(normalizedSpeed) * forwardInput;
+                    
+                    rb.AddForceAtPosition(accelDir * aviableTorque * speed, tireTransforms[i].position);
+                    
+                    Debug.DrawRay(tireTransforms[i].position, accelDir * carSpeed, Color.blue);
+                }
+                else
+                {
+                    rb.drag = drag;
+                }
             }
         }
     }
     
     
-    private void OnMove(InputValue value)
+    private void OnMoveForward(InputValue value)
     {
-        moveInput = new Vector3(value.Get<Vector2>().x, 0, value.Get<Vector2>().y);
+        forwardInput = value.Get<float>();
+    }
+    
+    private void OnMoveRight(InputValue value)
+    {
+        rightInput = value.Get<float>();
     }
 }
