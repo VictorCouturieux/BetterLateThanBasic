@@ -344,9 +344,9 @@ MonoBehaviour:
   frontGripFactor: 40
   rearGripFactor: 40
   tireMass: 0.01
-  carTopSpeed: 25
-  drag: 3
-  speed: 25
+  carTopSpeed: 15
+  drag: 2
+  speed: 15
   powerCurve:
     serializedVersion: 2
     m_Curve:
@@ -389,7 +389,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxAngleRotation: 30
+  maxWheelAngle: 30
 --- !u!54 &3474254461092903800
 Rigidbody:
   m_ObjectHideFlags: 0
