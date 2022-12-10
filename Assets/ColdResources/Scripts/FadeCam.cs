@@ -1,8 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FadeCam : MonoBehaviour
 {
+    
+    
     [SerializeField] private UnityEngine.UI.Image _darkPanel;
     // [SerializeField] private float _fadeStep = 1;
 
