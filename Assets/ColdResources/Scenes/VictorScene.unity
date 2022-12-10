@@ -391,7 +391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159643032}
-  m_LocalRotation: {x: -0, y: 1.7763568e-15, z: -1.3322676e-15, w: 1}
+  m_LocalRotation: {x: -0, y: -4.2755133e-11, z: 2.1596058e-11, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -561,7 +561,7 @@ MonoBehaviour:
   p1: {fileID: 39963143}
   p2: {fileID: 1197796986}
   errorGamepadNotConnected: {fileID: 1540696740}
-  isMappedWithGamePads: 1
+  mappedWithGamepads: 0
   arcadeTimer: {fileID: 307665840}
 --- !u!114 &243841572
 MonoBehaviour:
@@ -791,8 +791,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354921726}
-  m_LocalRotation: {x: -0.000000014901159, y: 0.00000000552216, z: -9.203577e-10,
-    w: 1}
+  m_LocalRotation: {x: 0.000000014901159, y: -0.00000000552259, z: 9.204292e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1816,7 +1815,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354155205}
-  m_LocalRotation: {x: 0.0824804, y: 0.000000029180422, z: -0.000000002415041, w: 0.99659276}
+  m_LocalRotation: {x: 0.082480416, y: 0.000000023600801, z: -0.0000000019532593,
+    w: 0.99659276}
   m_LocalPosition: {x: 0, y: 2.9999971, z: -8.000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2568,7 +2568,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059322316}
-  m_LocalRotation: {x: 0.23174128, y: -0.000000018713628, z: 0.0000000044580784, w: 0.9727775}
+  m_LocalRotation: {x: 0.23174128, y: 0.000000018710828, z: -0.0000000044574127, w: 0.9727775}
   m_LocalPosition: {x: 0, y: 4.4399977, z: -8.000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
