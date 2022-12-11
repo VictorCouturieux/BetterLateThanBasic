@@ -170,12 +170,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1095938440291879530}
   - component: {fileID: 1095938440291879529}
+  - component: {fileID: 5789386288828470212}
   - component: {fileID: 1095938440291879528}
   - component: {fileID: 1095938440291879527}
   - component: {fileID: 1095938440291879531}
   m_Layer: 0
   m_Name: CarPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,7 +224,7 @@ MonoBehaviour:
   frontGripFactor: 40
   rearGripFactor: 40
   tireMass: 0.01
-  carTopSpeed: 20
+  carTopSpeed: 50
   speed: 20
   powerCurve:
     serializedVersion: 2
@@ -270,6 +271,20 @@ MonoBehaviour:
   drag: 2
   maxWheelAngle: 30
   carMass: 50
+--- !u!114 &5789386288828470212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095938440291879526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e686453fc30829b468e74dc18b96a959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visual: {fileID: 1095938440026969879}
+  carSensibilityToHit: 50
 --- !u!65 &1095938440291879528
 BoxCollider:
   m_ObjectHideFlags: 0

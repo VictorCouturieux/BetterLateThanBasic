@@ -8,28 +8,26 @@ public class CarController : MonoBehaviour
     [Header("place front wheels then rear wheel in this order inside the list")]
     [SerializeField] private List<Transform> tireTransforms;
     
-    [Space]
-    [Header("suspension setup")]
+    [Space] [Header("Suspension setup")]
     [SerializeField] private float springStrength = 50;
     [SerializeField] private float springDamper = 5;
     [SerializeField] private float springOffsef = 1.5f;
 
-    [Space] 
-    [Header("steering setup")] 
+    [Space] [Header("Steering setup")] 
     [SerializeField] private float frontGripFactor = 40;
     [SerializeField] private float rearGripFactor = 40;
     [SerializeField] private float tireMass = .01f;
 
-    [Space] [Header("acceleration setup")] 
+    [Space] [Header("Acceleration setup")] 
     [SerializeField] private float carTopSpeed = 15;
     [SerializeField] private float speed = 15;
     [SerializeField] private AnimationCurve powerCurve;
     [SerializeField] private float drag = 2;
 
-    [Space] [Header("rotation angle setup")] 
+    [Space] [Header("Rotation angle setup")] 
     [SerializeField] private float maxWheelAngle = 30;
     
-    [Space] [Header("others setup")] 
+    [Space] [Header("Others setup")] 
     [SerializeField] private float carMass = 30;
     
     private Rigidbody carRigidbody;
