@@ -1,35 +1,23 @@
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
 public class ArcadeTimer : MonoBehaviour
 {
-    private static ArcadeTimer instance = null;
-    public static ArcadeTimer Instance => instance;
     
     [SerializeField] private TMP_Text timerTextP1; 
     [SerializeField] private TMP_Text timerTextP2;
     [SerializeField] private TMP_Text startTimerText;
     
+    [SerializeField] private VoidGameEvent startTimeOutEvent;
+    [SerializeField] private VoidGameEvent timerOutEvent;
+    
     private float startTimer = 4; //3sec
-    public float StartTimer => startTimer;
+    // public float StartTimer => startTimer;
     private bool startTimeOut = false; 
-    public bool StartTimeOut => startTimeOut;
     
     private float timer = 180; //3min
-    public float Timer => timer;
     private bool timeOut = false;
-    public bool TimeOut => timeOut;
-
-    private void Awake() {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        } else {
-            instance = this;
-        }
-        DontDestroyOnLoad(this.gameObject);
-    }
 
     void Update () {
         if (!startTimeOut) {
@@ -39,6 +27,7 @@ public class ArcadeTimer : MonoBehaviour
             if (startTimer <= 0) {
                 startTimeOut = true;
                 startTimerText.gameObject.SetActive(false);
+                startTimeOutEvent.Call();
             }
         }
         if (startTimeOut && !timeOut) {
@@ -53,17 +42,9 @@ public class ArcadeTimer : MonoBehaviour
             if (timer <= 0) {
                 timeOut = true;
                 timerTextP2.text = "00:00:00";
-                TimerOut();
+                timerOutEvent.Call();
             }
         }
     }
-    
-    private void StartTimerOut() {
-        
-    }
 
-    private void TimerOut() {
-        
-    }
-    
 }
