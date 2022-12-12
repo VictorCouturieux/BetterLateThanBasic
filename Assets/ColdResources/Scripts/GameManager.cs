@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -10,11 +11,17 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private String mainMenuScene;
 	[SerializeField] private String gameScene;
 	[SerializeField] private String scoreMenuScene;
+
+	// [SerializeField] private CalculatedScoreEvent calculatedScoreEvent;
 	
 	[SerializeField] private VoidGameEvent startGameEvent;
 	[SerializeField] private VoidGameEvent exitGameEvent;
-	[SerializeField] private CarRaceFinishEvent carRaceFinishEvent;
-	[SerializeField] private VoidGameEvent timerOutEvent;
+	[SerializeField] private VoidGameEvent restartGameEvent;
+	[SerializeField] private VoidGameEvent mainMenuEvent;
+	[SerializeField] private CalculatedScoreEvent timerOutEvent;
+
+	[HideInInspector] public int scorePlayer1 = 0;
+	[HideInInspector] public int scorePlayer2 = 0;
 	
 	private void Awake() {
 		if (instance != null && instance != this)
@@ -25,13 +32,46 @@ public class GameManager : MonoBehaviour
 			instance = this;
 		}
 		DontDestroyOnLoad(this.gameObject);
+		SceneManager.sceneLoaded += OnSceneFinishedLoading;
+	}
+
+	private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode) {
+		if (SceneManager.GetActiveScene().name == gameScene) {
+			scorePlayer1 = 0;
+			scorePlayer2 = 0;
+		}
+		WhenSceneLoad();
+	}
+
+	private void WhenSceneLoad() {
+		if (SceneManager.GetActiveScene().name != gameScene) {
+			if (Gamepad.all.Count >= 2) {
+				if (!Gamepad.all[0].enabled) {
+					InputSystem.EnableDevice(Gamepad.all[0]);
+				}
+				if (Gamepad.all[1].enabled) {
+					InputSystem.DisableDevice(Gamepad.all[1]);
+				}
+			} else if (Gamepad.all.Count == 1) {
+				if (!Gamepad.all[0].enabled) {
+					InputSystem.EnableDevice(Gamepad.all[0]);
+				}
+			} else if (Gamepad.all.Count == 0) {
+				if (!Keyboard.current.enabled) {
+					InputSystem.EnableDevice(Keyboard.current);
+				}
+			}
+		}
 	}
 
 	private void OnEnable() {
 		startGameEvent.AddCallback(OnStartGame);
 		exitGameEvent.AddCallback(OnExitGame);
-		carRaceFinishEvent.AddCallback(CarRaceFinish);
-		timerOutEvent.AddCallback(TimeOut);
+		restartGameEvent.AddCallback(OnRestartGame);
+		mainMenuEvent.AddCallback(OnMainMenuGame);
+		timerOutEvent.AddCallback(RaceFinish);
+		
+		// calculatedScoreEvent.AddCallback(CalculatedScore);
 	}
 
 	private void OnStartGame() {
@@ -45,19 +85,28 @@ public class GameManager : MonoBehaviour
 		Application.Quit();
 	}
 
-	private void CarRaceFinish(GameObject car, float swagPoints) {
-		Debug.Log(car.name + " a franchie la ligne d'arrivé");
+	private void OnRestartGame() {
+		SceneManager.LoadScene(gameScene);
 	}
 	
-	private void TimeOut() {
+	private void OnMainMenuGame() {
+		SceneManager.LoadScene(mainMenuScene);
+	}
+
+	private void RaceFinish(int scoreP1, int scoreP2) {
+		scorePlayer1 = scoreP1;
+		scorePlayer2 = scoreP2;
 		SceneManager.LoadScene(scoreMenuScene);
 	}
 
 	private void OnDisable() {
 		startGameEvent.RemoveCallback(OnStartGame);
 		exitGameEvent.RemoveCallback(OnExitGame);
-		carRaceFinishEvent.RemoveCallback(CarRaceFinish);
-		timerOutEvent.RemoveCallback(TimeOut);
+		restartGameEvent.RemoveCallback(OnRestartGame);
+		mainMenuEvent.RemoveCallback(OnMainMenuGame);
+		timerOutEvent.RemoveCallback(RaceFinish);
+		
+		// calculatedScoreEvent.RemoveCallback(CalculatedScore);
 	}
 
 }

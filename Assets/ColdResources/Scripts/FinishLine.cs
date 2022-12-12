@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FinishLine : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class FinishLine : MonoBehaviour
 	
 	private void OnTriggerEnter(Collider other) {
 		if (other.gameObject.CompareTag("Player")) {
+			// carRaceFinishEvent.Call(other.gameObject.GetComponent<PlayerInput>(), 0f);
 			carRaceFinishEvent.Call(other.gameObject, 0f);
 		}
 	}

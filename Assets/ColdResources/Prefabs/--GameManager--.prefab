@@ -49,5 +49,8 @@ MonoBehaviour:
   scoreMenuScene: ScoreMenuScene
   startGameEvent: {fileID: 11400000, guid: 2d241d50e857faf498f45840a111dd32, type: 2}
   exitGameEvent: {fileID: 11400000, guid: 21dcf1e8a2d4dcb4fb16a017cb5017b2, type: 2}
-  carRaceFinishEvent: {fileID: 11400000, guid: 71923818563abd74196fb291916b9a39, type: 2}
-  timerOutEvent: {fileID: 11400000, guid: 48fe563a56cd27946b5b88393865bfa0, type: 2}
+  restartGameEvent: {fileID: 11400000, guid: b0b4a74d336c84e4aa51969e9dde2c93, type: 2}
+  mainMenuEvent: {fileID: 11400000, guid: f283da92e6c69564f9f74a262071b5d9, type: 2}
+  timerOutEvent: {fileID: 11400000, guid: c0c3115d5b9896f45a284ef6656dbc7f, type: 2}
+  scorePlayer1: 0
+  scorePlayer2: 0

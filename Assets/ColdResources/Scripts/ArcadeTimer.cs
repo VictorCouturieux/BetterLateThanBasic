@@ -11,7 +11,8 @@ public class ArcadeTimer : MonoBehaviour
     [SerializeField] private TMP_Text startTimerText;
     
     [SerializeField] private VoidGameEvent startTimeOutEvent;
-    [SerializeField] private VoidGameEvent timerOutEvent;
+    
+    [SerializeField] private ControllersDetection controllersDetection;
     
     private float startTimer = 4; //3sec
     // public float StartTimer => startTimer;
@@ -49,7 +50,7 @@ public class ArcadeTimer : MonoBehaviour
             if (timer <= 0) {
                 timeOut = true;
                 timerTextP2.text = "00:00:00";
-                timerOutEvent.Call();
+                controllersDetection.CalculateScore();
             }
         }
     }

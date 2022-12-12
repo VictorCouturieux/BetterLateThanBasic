@@ -3,15 +3,28 @@ using UnityEngine.InputSystem;
 
 public class ControllersDetection : MonoBehaviour
 {
-	[SerializeField] private PlayerInput p1;
-	[SerializeField] private PlayerInput p2;
+	[SerializeField] private GameObject player1;
+	[SerializeField] private GameObject player2;
+	
+	[SerializeField] private int bonusWhenFirst = 6;
+	[SerializeField] private int bonusWhenSecond = 3;
+	
+	private PlayerInput p1PlayerInput;
+	private PlayerInput p2PlayerInput;
+
+	private BodyCarPartsManager p1BodyCarParts;
+	private int bonusSwagPointsP1 = 0;
+	private BodyCarPartsManager p2BodyCarParts;
+	private int bonusSwagPointsP2 = 0;
 
 	[SerializeField] private GameObject errorGamepadNotConnected;
 	[SerializeField] public bool mappedWithGamepads = true;
 
 	[SerializeField] private ArcadeTimer arcadeTimer;
-	
+
 	[SerializeField] private VoidGameEvent startTimeOutEvent;
+	[SerializeField] private CarRaceFinishEvent carRaceFinishEvent;
+	[SerializeField] private CalculatedScoreEvent timerOutEvent;
 	
 	private InputDevice p1Device;
 	private InputDevice p2Device;
@@ -19,35 +32,75 @@ public class ControllersDetection : MonoBehaviour
 	private float tempTime;
 	private int tempTimer = 0;
 
+	private void Awake() {
+		p1PlayerInput = player1.GetComponent<PlayerInput>();
+		p2PlayerInput = player2.GetComponent<PlayerInput>();
+
+		p1BodyCarParts = player1.GetComponent<BodyCarPartsManager>();
+		p2BodyCarParts = player2.GetComponent<BodyCarPartsManager>();
+	}
+
 	private void OnEnable() {
 		startTimeOutEvent.AddCallback(StartTimerOut);
+		carRaceFinishEvent.AddCallback(CarRaceFinish);
 	}
 	
 	private void StartTimerOut() {
-		EnableControlDevice();
+		EnableControlDevice(p1PlayerInput);
+		EnableControlDevice(p2PlayerInput);
+	}
+	
+	private void CarRaceFinish(GameObject car, float swagPoints) {
+		Debug.Log(car.name + " a franchie la ligne d'arrivé");
+		if (car.GetComponent<PlayerInput>() == p1PlayerInput) {
+			DisableControlDevice(p1PlayerInput);
+			if (bonusSwagPointsP2 == 0) {
+				bonusSwagPointsP1 = bonusWhenFirst;
+			}else {
+				bonusSwagPointsP1 = bonusWhenSecond;
+			}
+		}else if (car.GetComponent<PlayerInput>() == p2PlayerInput) {
+			DisableControlDevice(p2PlayerInput);
+			if (bonusSwagPointsP1 == 0) {
+				bonusSwagPointsP2 = bonusWhenFirst;
+			}else {
+				bonusSwagPointsP2 = bonusWhenSecond;
+			}
+		}
+		if (!p1PlayerInput.devices[0].enabled && !p2PlayerInput.devices[0].enabled) {
+			CalculateScore();
+		}
+	}
+
+	public void CalculateScore() {
+		int totalPointP1 = p1BodyCarParts.playerScore + bonusSwagPointsP1;
+		int totalPointP2 = p2BodyCarParts.playerScore + bonusSwagPointsP2;
+		timerOutEvent.Call(totalPointP1, totalPointP2);
 	}
 	
 	private void OnDisable() {
 		startTimeOutEvent.RemoveCallback(StartTimerOut);
+		carRaceFinishEvent.RemoveCallback(CarRaceFinish);
 	}
 	
 	private void Start() {
-		DisableControlDevice();
+		DisableControlDevice(p1PlayerInput);
+		DisableControlDevice(p2PlayerInput);
 		
 		if (mappedWithGamepads) {
 			if (Gamepad.all.Count >= 2) {
-	            p1.SwitchCurrentControlScheme("Gamepad", Gamepad.all[0]);
+	            p1PlayerInput.SwitchCurrentControlScheme("Gamepad", Gamepad.all[0]);
 	            p1Device = Gamepad.all[0];
-	            p2.SwitchCurrentControlScheme("Gamepad", Gamepad.all[1]);
+	            p2PlayerInput.SwitchCurrentControlScheme("Gamepad", Gamepad.all[1]);
 	            p2Device = Gamepad.all[1];
 	        } else if (Gamepad.all.Count == 1) {
-	            p1.SwitchCurrentControlScheme("Gamepad", Gamepad.all[0]);
+	            p1PlayerInput.SwitchCurrentControlScheme("Gamepad", Gamepad.all[0]);
 	            p1Device = Gamepad.all[0];
-	            p2.SwitchCurrentControlScheme();
+	            p2PlayerInput.SwitchCurrentControlScheme();
 	        }
 			else {
-				p1.SwitchCurrentControlScheme();
-				p2.SwitchCurrentControlScheme();
+				p1PlayerInput.SwitchCurrentControlScheme();
+				p2PlayerInput.SwitchCurrentControlScheme();
 				// p2.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
 			}
 	        InputSystem.onDeviceChange +=
@@ -70,20 +123,21 @@ public class ControllersDetection : MonoBehaviour
 					            }
 				            }
 			            }
-			            if (!arcadeTimer.StartTimeOut) {
-				            DisableControlDevice();
-			            }
 			            if (p1Device != null) {
-				            p1.SwitchCurrentControlScheme("Gamepad", p1Device);
+				            p1PlayerInput.SwitchCurrentControlScheme("Gamepad", p1Device);
 			            }
 			            else {
-				            p1.SwitchCurrentControlScheme();
+				            p1PlayerInput.SwitchCurrentControlScheme();
 			            }
 			            if (p2Device != null) {
-				            p2.SwitchCurrentControlScheme("Gamepad", p2Device);
+				            p2PlayerInput.SwitchCurrentControlScheme("Gamepad", p2Device);
 			            }
 			            else {
-				            p2.SwitchCurrentControlScheme();
+				            p2PlayerInput.SwitchCurrentControlScheme();
+			            }
+			            if (!arcadeTimer.StartTimeOut) {
+				            DisableControlDevice(p1PlayerInput);
+				            DisableControlDevice(p2PlayerInput);
 			            }
 			            break;
 		            case InputDeviceChange.Removed:
@@ -97,16 +151,16 @@ public class ControllersDetection : MonoBehaviour
 				            }
 			            }
 			            if (p1Device != null) {
-				            p1.SwitchCurrentControlScheme("Gamepad", p1Device);
+				            p1PlayerInput.SwitchCurrentControlScheme("Gamepad", p1Device);
 			            }
 			            else {
-				            p1.SwitchCurrentControlScheme();
+				            p1PlayerInput.SwitchCurrentControlScheme();
 			            }
 			            if (p2Device != null) {
-				            p2.SwitchCurrentControlScheme("Gamepad", p2Device);
+				            p2PlayerInput.SwitchCurrentControlScheme("Gamepad", p2Device);
 			            }
 			            else {
-				            p2.SwitchCurrentControlScheme();
+				            p2PlayerInput.SwitchCurrentControlScheme();
 			            }
 			            break;
 		            case InputDeviceChange.Reconnected:
@@ -147,21 +201,15 @@ public class ControllersDetection : MonoBehaviour
 		}
 	}
 	
-	private void EnableControlDevice() {
-		if (p1.devices.Count >= 1) {
-			InputSystem.EnableDevice(p1.devices[0]);
-		}
-		if (p2.devices.Count >= 1) {
-			InputSystem.EnableDevice(p2.devices[0]);
+	private void EnableControlDevice(PlayerInput playerInput) {
+		if (playerInput.devices.Count >= 1) {
+			InputSystem.EnableDevice(playerInput.devices[0]);
 		}
 	}
 	
-	private void DisableControlDevice() {
-		if (p1.devices.Count >= 1) {
-			InputSystem.DisableDevice(p1.devices[0]);
-		}
-		if (p2.devices.Count >= 1) {
-			InputSystem.DisableDevice(p2.devices[0]);
+	private void DisableControlDevice(PlayerInput playerInput) {
+		if (playerInput.devices.Count >= 1) {
+			InputSystem.DisableDevice(playerInput.devices[0]);
 		}
 	}
 
