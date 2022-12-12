@@ -9,12 +9,11 @@ public class GameManager : MonoBehaviour
 	
 	[SerializeField] private String mainMenuScene;
 	[SerializeField] private String gameScene;
+	[SerializeField] private String scoreMenuScene;
 	
 	[SerializeField] private VoidGameEvent startGameEvent;
 	[SerializeField] private VoidGameEvent exitGameEvent;
-	
 	[SerializeField] private CarRaceFinishEvent carRaceFinishEvent;
-	
 	[SerializeField] private VoidGameEvent timerOutEvent;
 	
 	private void Awake() {
@@ -51,7 +50,7 @@ public class GameManager : MonoBehaviour
 	}
 	
 	private void TimeOut() {
-        
+		SceneManager.LoadScene(scoreMenuScene);
 	}
 
 	private void OnDisable() {

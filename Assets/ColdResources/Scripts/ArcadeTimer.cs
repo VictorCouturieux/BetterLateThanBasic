@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -14,10 +15,16 @@ public class ArcadeTimer : MonoBehaviour
     
     private float startTimer = 4; //3sec
     // public float StartTimer => startTimer;
-    private bool startTimeOut = false; 
+    private bool startTimeOut = false;
+    public bool StartTimeOut => startTimeOut;
     
-    private float timer = 180; //3min
+    [SerializeField] private float raceTime = 180; //3min
+    private float timer; //3min
     private bool timeOut = false;
+
+    private void Awake() {
+        timer = raceTime;
+    }
 
     void Update () {
         if (!startTimeOut) {

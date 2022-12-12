@@ -8,7 +8,8 @@ public class ControllersDetection : MonoBehaviour
 
 	[SerializeField] private GameObject errorGamepadNotConnected;
 	[SerializeField] public bool mappedWithGamepads = true;
-	
+
+	[SerializeField] private ArcadeTimer arcadeTimer;
 	
 	[SerializeField] private VoidGameEvent startTimeOutEvent;
 	
@@ -68,6 +69,9 @@ public class ControllersDetection : MonoBehaviour
 						            p2Device = device;
 					            }
 				            }
+			            }
+			            if (!arcadeTimer.StartTimeOut) {
+				            DisableControlDevice();
 			            }
 			            if (p1Device != null) {
 				            p1.SwitchCurrentControlScheme("Gamepad", p1Device);

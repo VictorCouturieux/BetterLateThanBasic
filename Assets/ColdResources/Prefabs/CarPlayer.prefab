@@ -285,6 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visual: {fileID: 1095938440026969879}
   carSensibilityToHit: 50
+  playerScore: 0
 --- !u!65 &1095938440291879528
 BoxCollider:
   m_ObjectHideFlags: 0
