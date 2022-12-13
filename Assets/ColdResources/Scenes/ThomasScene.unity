@@ -987,6 +987,24 @@ Transform:
   m_Father: {fileID: 1711899661}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &945895195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2296046591175173971, guid: c5cbcefc5463cf248bb8215d9aa8b912,
+    type: 3}
+  m_PrefabInstance: {fileID: 1377076622335957948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &945895200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945895195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44142419377a54a888bc02a1d67e01f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1147385754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1485,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206238082456431726, guid: c5cbcefc5463cf248bb8215d9aa8b912,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206238082456431726, guid: c5cbcefc5463cf248bb8215d9aa8b912,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Name
+      value: RarityColor
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206238082456431726, guid: c5cbcefc5463cf248bb8215d9aa8b912,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206238082456431726, guid: c5cbcefc5463cf248bb8215d9aa8b912,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206238082456431726, guid: c5cbcefc5463cf248bb8215d9aa8b912,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206238082456431726, guid: c5cbcefc5463cf248bb8215d9aa8b912,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206238082456431726, guid: c5cbcefc5463cf248bb8215d9aa8b912,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Overridden
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5cbcefc5463cf248bb8215d9aa8b912, type: 3}
