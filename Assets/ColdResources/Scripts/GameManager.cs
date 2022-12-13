@@ -38,6 +38,22 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(this.gameObject);
 		SceneManager.sceneLoaded += OnSceneFinishedLoading;
 	}
+	
+	void Start()
+    {
+        SetRatio(4, 3);
+    }
+    void SetRatio(float w, float h)
+    {
+        if ((((float)Screen.width) / ((float)Screen.height)) > w / h)
+        {
+            Screen.SetResolution((int)(((float)Screen.height) * (w / h)), Screen.height, true);
+        }
+        else
+        {
+            Screen.SetResolution(Screen.width, (int)(((float)Screen.width) * (h / w)), true);
+        }
+    }
 
 	private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode) {
 		if (SceneManager.GetActiveScene().name == gameScene) {
