@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class BodyCarPartsManager : MonoBehaviour
@@ -84,6 +85,12 @@ public class BodyCarPartsManager : MonoBehaviour
     {
         if (other.transform.CompareTag("BodyCarPart"))
         {
+            //TEST
+            
+            Gamepad.current.SetMotorSpeeds(.0f,1f);
+            
+            //END TEST
+            
             //trigger a loot box
             other.GetComponent<BodyCarCollectibleSpawner>().OnCollisionWithCar();
             var currentCollectibleSpawner = other.GetComponent<BodyCarCollectibleSpawner>();
