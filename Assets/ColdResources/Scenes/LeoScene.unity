@@ -11687,10 +11687,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrieres
       objectReference: {fileID: 0}
+    - target: {fileID: -2732623392048403487, guid: 7a4436002368cae4a8b634cb2cd18d92,
+        type: 3}
+      propertyPath: m_TagString
+      value: Barrier
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a4436002368cae4a8b634cb2cd18d92,
         type: 3}
       propertyPath: m_Name
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a4436002368cae4a8b634cb2cd18d92,
+        type: 3}
+      propertyPath: m_TagString
+      value: Route
       objectReference: {fileID: 0}
     - target: {fileID: 8566868674994590191, guid: 7a4436002368cae4a8b634cb2cd18d92,
         type: 3}
