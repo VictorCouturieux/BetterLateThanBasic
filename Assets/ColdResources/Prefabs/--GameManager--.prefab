@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuScene: MainMenuScene
-  gameScene: VictorScene
+  gameScene: LevelGameScene
   scoreMenuScene: ScoreMenuScene
   startFadeInEvent: {fileID: 11400000, guid: 003e7694396f1024db0faefc222d7aa4, type: 2}
   endFadeInEvent: {fileID: 11400000, guid: 2ffab8002c4289649969ed8849e9437f, type: 2}
