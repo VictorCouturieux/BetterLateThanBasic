@@ -804,7 +804,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh78596
+  m_Name: pb_Mesh182138
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1192,6 +1192,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7199265784088801963, guid: afbe595f39ee21d46b93bd977d141050,
     type: 3}
   m_PrefabInstance: {fileID: 1763922525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &95143619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1095938440026969879, guid: 1a9ae1c4152f91c48baa056089214339,
+    type: 3}
+  m_PrefabInstance: {fileID: 1642131095}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &96661135
 PrefabInstance:
@@ -1687,7 +1693,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh78684
+  m_Name: pb_Mesh182226
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5486,7 +5492,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh78796
+  m_Name: pb_Mesh182340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7568,6 +7574,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 468482016}
     m_Modifications:
+    - target: {fileID: 1095938440026969879, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: m_Name
+      value: Visual2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440026969879, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1095938440291879526, guid: 1a9ae1c4152f91c48baa056089214339,
         type: 3}
       propertyPath: m_Name
@@ -13371,7 +13387,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh78992
+  m_Name: pb_Mesh182536
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22458,6 +22474,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 468482016}
     m_Modifications:
+    - target: {fileID: 1095938440026969879, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: m_Name
+      value: Visual1
+      objectReference: {fileID: 0}
     - target: {fileID: 1095938440291879526, guid: 1a9ae1c4152f91c48baa056089214339,
         type: 3}
       propertyPath: m_Name
@@ -22783,6 +22804,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1377076621988197303, guid: c5cbcefc5463cf248bb8215d9aa8b912,
     type: 3}
   m_PrefabInstance: {fileID: 1649890389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1656943312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1095938440026969879, guid: 1a9ae1c4152f91c48baa056089214339,
+    type: 3}
+  m_PrefabInstance: {fileID: 494782221}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1664543796
 PrefabInstance:
@@ -30971,8 +30998,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -110}
-  m_SizeDelta: {x: 98, y: 35}
+  m_AnchoredPosition: {x: -137.29486, y: -110}
+  m_SizeDelta: {x: 252.5898, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4838565618772567653
 MonoBehaviour:
@@ -31022,7 +31049,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.75
+  m_fontSize: 40
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -31094,7 +31121,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b14abb92467d2c74e929b1b6d103d269, type: 3}
   - {fileID: 21300000, guid: 56a135292aea7c24486e3d1d32d051b3, type: 3}
   - {fileID: 21300000, guid: 1b79ff10da377784db6f83bbfb3c8aca, type: 3}
-  raceTime: 180
+  raceTime: 30
 --- !u!1 &4838565618831855990
 GameObject:
   m_ObjectHideFlags: 0
@@ -31151,8 +31178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -110}
-  m_SizeDelta: {x: 98, y: 35}
+  m_AnchoredPosition: {x: -125.83594, y: -110}
+  m_SizeDelta: {x: 229.6719, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4838565618992813129
 MonoBehaviour:
@@ -31202,7 +31229,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.75
+  m_fontSize: 40
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -31323,14 +31350,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1642131097}
   player2: {fileID: 494782223}
-  bonusWhenFirst: 6
-  bonusWhenSecond: 3
+  visualP1: {fileID: 95143619}
+  visualP2: {fileID: 1656943312}
+  bonusWhenFirst: 400
+  bonusWhenSecond: 200
   errorGamepadNotConnected: {fileID: 4838565617900953724}
-  mappedWithGamepads: 0
+  mappedWithGamepads: 1
   arcadeTimer: {fileID: 4838565618831855976}
   startTimeOutEvent: {fileID: 11400000, guid: 9fa2f28e9106ace40a1fdb7c0050f0a6, type: 2}
   carRaceFinishEvent: {fileID: 11400000, guid: 71923818563abd74196fb291916b9a39, type: 2}
   timerOutEvent: {fileID: 11400000, guid: c0c3115d5b9896f45a284ef6656dbc7f, type: 2}
+  showCarPlayersEvent: {fileID: 11400000, guid: 917b5fdbf94b32d42ba11103f5ad97b4,
+    type: 2}
 --- !u!114 &4838565619156267260
 MonoBehaviour:
   m_ObjectHideFlags: 0

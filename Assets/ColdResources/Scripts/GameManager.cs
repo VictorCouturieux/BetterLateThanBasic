@@ -20,13 +20,16 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private VoidGameEvent restartGameEvent;
 	[SerializeField] private VoidGameEvent mainMenuEvent;
 	[SerializeField] private CalculatedScoreEvent timerOutEvent;
-
+	[SerializeField] private ShowCarPlayersEvent showCarPlayersEvent;
+	
+	[HideInInspector] public GameObject carPlayer1;
+	[HideInInspector] public GameObject carPlayer2;
+	
 	[HideInInspector] public int scorePlayer1 = 0;
 	[HideInInspector] public int scorePlayer2 = 0;
 	
 	private void Awake() {
-		if (instance != null && instance != this)
-		{
+		if (instance != null && instance != this) {
 			Destroy(this.gameObject);
 			return;
 		} else {
@@ -40,7 +43,13 @@ public class GameManager : MonoBehaviour
 		if (SceneManager.GetActiveScene().name == gameScene) {
 			scorePlayer1 = 0;
 			scorePlayer2 = 0;
+			// carPlayer1 = null;
+			// carPlayer2 = null;
 		}
+		else if (SceneManager.GetActiveScene().name == scoreMenuScene) {
+			Debug.Log("CarPlayers : " + carPlayer1 + " " + carPlayer2);
+		}
+
 		WhenSceneLoad();
 	}
 
@@ -72,6 +81,7 @@ public class GameManager : MonoBehaviour
 		restartGameEvent.AddCallback(OnRestartGame);
 		mainMenuEvent.AddCallback(OnMainMenuGame);
 		timerOutEvent.AddCallback(RaceFinish);
+		showCarPlayersEvent.AddCallback(RaceCarFinish);
 	}
 
 	private void OnStartGame() {
@@ -99,7 +109,12 @@ public class GameManager : MonoBehaviour
 	private void RaceFinish(int scoreP1, int scoreP2) {
 		scorePlayer1 = scoreP1;
 		scorePlayer2 = scoreP2;
-		// startFadeInEvent.Call();
+	}
+	
+	private void RaceCarFinish(GameObject p1, GameObject p2) {
+		carPlayer1 = p1;
+		carPlayer2 = p2;
+		Debug.Log("CarPlayers : " + carPlayer1 + " " + carPlayer2);
 		SceneManager.LoadScene(scoreMenuScene);
 	}
 
@@ -114,6 +129,7 @@ public class GameManager : MonoBehaviour
 		restartGameEvent.RemoveCallback(OnRestartGame);
 		mainMenuEvent.RemoveCallback(OnMainMenuGame);
 		timerOutEvent.RemoveCallback(RaceFinish);
+		showCarPlayersEvent.AddCallback(RaceCarFinish);
 	}
 
 }
