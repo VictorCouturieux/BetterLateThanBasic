@@ -54,10 +54,10 @@ public class CarController : MonoBehaviour
         if (tireTransforms.Count < 1) Debug.Log("tireTransforms is empty, please assign tires !");
         raycastDistance = springOffsef + 1;
 
-        fmodEventmotor = FMODUnity.RuntimeManager.CreateInstance("event:/Laguna/Motor/Motor P1");
+        fmodEventmotor = FMODUnity.RuntimeManager.CreateInstance(motor);
         fmodEventmotor.start();
 
-        fmodEventdrift = FMODUnity.RuntimeManager.CreateInstance("event:/Laguna/Drift/Drift P1");
+        fmodEventdrift = FMODUnity.RuntimeManager.CreateInstance(drift);
         fmodEventdrift.start();
     }
 
@@ -165,7 +165,7 @@ public class CarController : MonoBehaviour
                     Debug.DrawRay(tireTransforms[i].position, accelDir * carSpeed, Color.blue);
                     
                     //FMOD SOUND INTEGRATION ACCELERATION/SPEED value -> (accelDir * aviableTorque * speed).magnitude
-                    float FmodAccel = (accelDir * aviableTorque * speed).magnitude;
+                    float FmodAccel = (accelDir * (normalizedSpeed * forwardInput) * speed).magnitude;
                     if (i == 0)
                     {
                         fmodEventmotor.setParameterByName("Speed", FmodAccel);
