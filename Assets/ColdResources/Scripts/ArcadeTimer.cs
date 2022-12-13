@@ -1,23 +1,26 @@
-using System;
-using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArcadeTimer : MonoBehaviour
 {
     
     [SerializeField] private TMP_Text timerTextP1; 
     [SerializeField] private TMP_Text timerTextP2;
-    [SerializeField] private TMP_Text startTimerText;
+    [SerializeField] private Image startTimerImg;
+    // [SerializeField] private TMP_Text startTimerText;
     
     [SerializeField] private VoidGameEvent startTimeOutEvent;
     
     [SerializeField] private ControllersDetection controllersDetection;
     
+    [SerializeField] private Sprite[] starterSprites ;
+    
     private float startTimer = 4; //3sec
     // public float StartTimer => startTimer;
     private bool startTimeOut = false;
-    public bool StartTimeOut => startTimeOut;
+    private bool goTimeOut = false;
+    public bool GoTimeOut => startTimeOut;
     
     [SerializeField] private float raceTime = 180; //3min
     private float timer; //3min
@@ -30,12 +33,19 @@ public class ArcadeTimer : MonoBehaviour
     void Update () {
         if (!startTimeOut) {
             startTimer -= Time.deltaTime;
+            
+            // int cooldown = Mathf.FloorToInt(startTimer % 60f);
+            // startTimerText.text = cooldown.ToString("0");
+
             int cooldown = Mathf.FloorToInt(startTimer % 60f);
-            startTimerText.text = cooldown.ToString("0");
+            if (cooldown>=0 && cooldown<=3) {
+                startTimerImg.sprite = starterSprites[cooldown];
+                goTimeOut = true;
+                startTimeOutEvent.Call();
+            }
             if (startTimer <= 0) {
                 startTimeOut = true;
-                startTimerText.gameObject.SetActive(false);
-                startTimeOutEvent.Call();
+                startTimerImg.gameObject.SetActive(false);
             }
         }
         if (startTimeOut && !timeOut) {
