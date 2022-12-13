@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private String gameScene;
 	[SerializeField] private String scoreMenuScene;
 
-	// [SerializeField] private CalculatedScoreEvent calculatedScoreEvent;
-	
+	[SerializeField] private VoidGameEvent startFadeInEvent;
+	[SerializeField] private VoidGameEvent endFadeInEvent;
+
 	[SerializeField] private VoidGameEvent startGameEvent;
 	[SerializeField] private VoidGameEvent exitGameEvent;
 	[SerializeField] private VoidGameEvent restartGameEvent;
@@ -65,16 +66,16 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnEnable() {
+		endFadeInEvent.AddCallback(EndFadeIn);
 		startGameEvent.AddCallback(OnStartGame);
 		exitGameEvent.AddCallback(OnExitGame);
 		restartGameEvent.AddCallback(OnRestartGame);
 		mainMenuEvent.AddCallback(OnMainMenuGame);
 		timerOutEvent.AddCallback(RaceFinish);
-		
-		// calculatedScoreEvent.AddCallback(CalculatedScore);
 	}
 
 	private void OnStartGame() {
+		startFadeInEvent.Call();
 		SceneManager.LoadScene(gameScene);
 	}
 	
@@ -86,27 +87,33 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnRestartGame() {
+		startFadeInEvent.Call();
 		SceneManager.LoadScene(gameScene);
 	}
 	
 	private void OnMainMenuGame() {
+		startFadeInEvent.Call();
 		SceneManager.LoadScene(mainMenuScene);
 	}
 
 	private void RaceFinish(int scoreP1, int scoreP2) {
 		scorePlayer1 = scoreP1;
 		scorePlayer2 = scoreP2;
+		startFadeInEvent.Call();
 		SceneManager.LoadScene(scoreMenuScene);
 	}
 
+	private void EndFadeIn() {
+		//todo : faire que les fade sois des event avec un string pour savoir sur quel scene ils vont
+	}
+
 	private void OnDisable() {
+		endFadeInEvent.RemoveCallback(EndFadeIn);
 		startGameEvent.RemoveCallback(OnStartGame);
 		exitGameEvent.RemoveCallback(OnExitGame);
 		restartGameEvent.RemoveCallback(OnRestartGame);
 		mainMenuEvent.RemoveCallback(OnMainMenuGame);
 		timerOutEvent.RemoveCallback(RaceFinish);
-		
-		// calculatedScoreEvent.RemoveCallback(CalculatedScore);
 	}
 
 }

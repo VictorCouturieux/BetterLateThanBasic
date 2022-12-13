@@ -47,6 +47,8 @@ MonoBehaviour:
   mainMenuScene: MainMenuScene
   gameScene: VictorScene
   scoreMenuScene: ScoreMenuScene
+  startFadeInEvent: {fileID: 11400000, guid: 003e7694396f1024db0faefc222d7aa4, type: 2}
+  endFadeInEvent: {fileID: 11400000, guid: 2ffab8002c4289649969ed8849e9437f, type: 2}
   startGameEvent: {fileID: 11400000, guid: 2d241d50e857faf498f45840a111dd32, type: 2}
   exitGameEvent: {fileID: 11400000, guid: 21dcf1e8a2d4dcb4fb16a017cb5017b2, type: 2}
   restartGameEvent: {fileID: 11400000, guid: b0b4a74d336c84e4aa51969e9dde2c93, type: 2}
