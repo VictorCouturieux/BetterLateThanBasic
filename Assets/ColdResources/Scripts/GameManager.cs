@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private String gameScene;
 	[SerializeField] private String scoreMenuScene;
 
-	[SerializeField] private VoidGameEvent startFadeInEvent;
+	// [SerializeField] private VoidGameEvent startFadeInEvent;
 	[SerializeField] private VoidGameEvent endFadeInEvent;
 
 	[SerializeField] private VoidGameEvent startGameEvent;
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnStartGame() {
-		startFadeInEvent.Call();
+		// startFadeInEvent.Call();
 		SceneManager.LoadScene(gameScene);
 	}
 	
@@ -87,19 +87,19 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnRestartGame() {
-		startFadeInEvent.Call();
+		// startFadeInEvent.Call();
 		SceneManager.LoadScene(gameScene);
 	}
 	
 	private void OnMainMenuGame() {
-		startFadeInEvent.Call();
+		// startFadeInEvent.Call();
 		SceneManager.LoadScene(mainMenuScene);
 	}
 
 	private void RaceFinish(int scoreP1, int scoreP2) {
 		scorePlayer1 = scoreP1;
 		scorePlayer2 = scoreP2;
-		startFadeInEvent.Call();
+		// startFadeInEvent.Call();
 		SceneManager.LoadScene(scoreMenuScene);
 	}
 
