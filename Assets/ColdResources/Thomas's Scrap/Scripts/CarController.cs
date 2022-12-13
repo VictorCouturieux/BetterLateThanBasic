@@ -120,6 +120,10 @@ public class CarController : MonoBehaviour
                 carRigidbody.AddForceAtPosition(steeringDir * tireMass * desiredAccel, tireTransforms[i].position);
 
                 Debug.DrawRay(tireTransforms[i].position, steeringDir * steeringVel, Color.red);
+                
+                //FMOD SOUND INTEGRATION STEERING/DRIFT value -> (steeringDir * steeringVel).magnitude
+                float FmodDrift = (steeringDir * steeringVel).magnitude;
+                if (i == 0) ; //place your code here before ';'
             }
             
             //acceleration / braking
@@ -145,6 +149,10 @@ public class CarController : MonoBehaviour
                     carRigidbody.AddForceAtPosition(accelDir * aviableTorque * speed, tireTransforms[i].position);
 
                     Debug.DrawRay(tireTransforms[i].position, accelDir * carSpeed, Color.blue);
+                    
+                    //FMOD SOUND INTEGRATION ACCELERATION/SPEED value -> (accelDir * aviableTorque * speed).magnitude
+                    float FmodAccel = (accelDir * aviableTorque * speed).magnitude;
+                    if (i == 0) ; //place your code here before ';'
                 }
                 else
                 {

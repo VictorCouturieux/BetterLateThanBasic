@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/ColdResources/Scenes/MainMenuScene.unity
     guid: cd96735d18d301b4093c00a9c396b331
   - enabled: 1
+    path: Assets/ColdResources/Scenes/LevelGameScene.unity
+    guid: 1b08bb3542401044d928c8160489226f
+  - enabled: 1
     path: Assets/ColdResources/Scenes/ScoreMenuScene.unity
     guid: 14470ec8af79e4a45b0e7e8c4f61700f
   m_configObjects: {}
