@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RotateBodyCarPart : MonoBehaviour
+public class RotateCollectibleVisual : MonoBehaviour
 {
     [Header("Choose on witch axe the looter rotate")]
     [SerializeField] private bool X;

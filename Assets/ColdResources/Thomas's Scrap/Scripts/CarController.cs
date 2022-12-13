@@ -1,8 +1,12 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// this script is a physic based car controller made by me (Thomas Boulanger) inspired by this video :
+/// https://www.youtube.com/watch?v=CdPYlj5uZeI
+/// this script need a rigidbody and a list of transform to simulate tire position
+/// </summary>
 public class CarController : MonoBehaviour
 {
     [Header("place front wheels then rear wheel in this order inside the list")]
@@ -11,7 +15,7 @@ public class CarController : MonoBehaviour
     [Space] [Header("Suspension setup")]
     [SerializeField] private float springStrength = 50;
     [SerializeField] private float springDamper = 5;
-    [SerializeField] private float springOffsef = 1.5f;
+    [SerializeField] private float springOffsef = .65f;
 
     [Space] [Header("Steering setup")] 
     [SerializeField] private float frontGripFactor = 40;
@@ -19,8 +23,8 @@ public class CarController : MonoBehaviour
     [SerializeField] private float tireMass = .01f;
 
     [Space] [Header("Acceleration setup")] 
-    [SerializeField] private float carTopSpeed = 15;
-    [SerializeField] private float speed = 15;
+    [SerializeField] private float carTopSpeed = 50;
+    [SerializeField] private float speed = 20;
     [SerializeField] private AnimationCurve powerCurve;
     [SerializeField] private float drag = 2;
 
@@ -48,11 +52,13 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        int raycastFailedHit = 0;
+        //loop for each tire
         for (int i = 0; i < tireTransforms.Count; i++)
         {
             Vector3 downDir = -Vector3.up;
             bool rayDidHit = Physics.Raycast(tireTransforms[i].position, downDir, out RaycastHit tireRay, raycastDistance);
+            
+            //apply different grip on front and rear tire, also rotate front tire depending on player inputs
             if (i < 2)
             {
                 tireTransforms[i].localRotation = Quaternion.Euler(0,rightInput * maxWheelAngle,0);
@@ -117,6 +123,7 @@ public class CarController : MonoBehaviour
             }
             
             //acceleration / braking
+            //note that in that case the car is a traction, test if i > 2 to change the car to propulsion
             if (rayDidHit && i < 2)
             {
                 //world-space direction of the acceleration/braking force
@@ -164,13 +171,9 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void OnMoveForward(InputValue value)
-    {
-        forwardInput = value.Get<float>();
-    }
     
-    private void OnMoveRight(InputValue value)
-    {
-        rightInput = value.Get<float>();
-    }
+    //reading player Input with the Unity New Input System
+    private void OnMoveForward(InputValue value) => forwardInput = value.Get<float>();
+    private void OnMoveRight(InputValue value) => rightInput = value.Get<float>();
+    
 }
