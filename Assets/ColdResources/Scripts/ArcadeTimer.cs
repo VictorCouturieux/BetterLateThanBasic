@@ -16,7 +16,7 @@ public class ArcadeTimer : MonoBehaviour
     
     [SerializeField] private Sprite[] starterSprites ;
     
-    private float startTimer = 4; //3sec
+    private float startTimer = 5; //3sec
     // public float StartTimer => startTimer;
     private bool startTimeOut = false;
     private bool goTimeOut = false;
@@ -41,6 +41,9 @@ public class ArcadeTimer : MonoBehaviour
             if (cooldown>=0 && cooldown<=3) {
                 startTimerImg.sprite = starterSprites[cooldown];
                 goTimeOut = true;
+            }
+
+            if (cooldown>=0 && cooldown<=0.5f) {
                 startTimeOutEvent.Call();
             }
             if (startTimer <= 0) {

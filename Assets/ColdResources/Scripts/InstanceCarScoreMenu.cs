@@ -12,9 +12,13 @@ public class InstanceCarScoreMenu : MonoBehaviour
         Debug.Log("CarPlayers : " + GameManager.Instance.carPlayer1 + " " + GameManager.Instance.carPlayer2);
         
         if (playerId == 1 && GameManager.Instance.carPlayer1 != null) {
-            Instantiate(GameManager.Instance.carPlayer1, transform);
+            GameObject newCar = Instantiate(GameManager.Instance.carPlayer1, transform);
+            newCar.transform.parent = transform;
+            newCar.transform.localPosition = Vector3.zero;
         } else if (playerId == 2 && GameManager.Instance.carPlayer2 != null ) {
-            Instantiate(GameManager.Instance.carPlayer2, transform);
+            GameObject newCar = Instantiate(GameManager.Instance.carPlayer2, transform);
+            newCar.transform.parent = transform;
+            newCar.transform.localPosition = Vector3.zero;
         }
     }
 

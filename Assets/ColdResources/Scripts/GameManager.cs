@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private String scoreMenuScene;
 
 	// [SerializeField] private VoidGameEvent startFadeInEvent;
-	[SerializeField] private VoidGameEvent endFadeInEvent;
+	// [SerializeField] private VoidGameEvent endFadeInEvent;
 
 	[SerializeField] private VoidGameEvent startGameEvent;
 	[SerializeField] private VoidGameEvent exitGameEvent;
@@ -46,9 +46,6 @@ public class GameManager : MonoBehaviour
 			// carPlayer1 = null;
 			// carPlayer2 = null;
 		}
-		else if (SceneManager.GetActiveScene().name == scoreMenuScene) {
-			Debug.Log("CarPlayers : " + carPlayer1 + " " + carPlayer2);
-		}
 
 		WhenSceneLoad();
 	}
@@ -75,7 +72,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnEnable() {
-		endFadeInEvent.AddCallback(EndFadeIn);
+		// endFadeInEvent.AddCallback(EndFadeIn);
 		startGameEvent.AddCallback(OnStartGame);
 		exitGameEvent.AddCallback(OnExitGame);
 		restartGameEvent.AddCallback(OnRestartGame);
@@ -113,7 +110,13 @@ public class GameManager : MonoBehaviour
 	
 	private void RaceCarFinish(GameObject p1, GameObject p2) {
 		carPlayer1 = p1;
+		carPlayer1.transform.parent = null;
+		DontDestroyOnLoad (carPlayer1.gameObject);
+		
 		carPlayer2 = p2;
+		carPlayer2.transform.parent = null;
+		DontDestroyOnLoad (carPlayer2.gameObject);
+		
 		Debug.Log("CarPlayers : " + carPlayer1 + " " + carPlayer2);
 		SceneManager.LoadScene(scoreMenuScene);
 	}
@@ -123,7 +126,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	private void OnDisable() {
-		endFadeInEvent.RemoveCallback(EndFadeIn);
+		// endFadeInEvent.RemoveCallback(EndFadeIn);
 		startGameEvent.RemoveCallback(OnStartGame);
 		exitGameEvent.RemoveCallback(OnExitGame);
 		restartGameEvent.RemoveCallback(OnRestartGame);

@@ -37,10 +37,7 @@ public class ControllersDetection : MonoBehaviour
 	private int tempTimer = 0;
 
 	private void Awake() {
-		
-		DontDestroyOnLoad(this.visualP1);
-		DontDestroyOnLoad(this.visualP2);
-		
+
 		p1PlayerInput = player1.GetComponent<PlayerInput>();
 		p2PlayerInput = player2.GetComponent<PlayerInput>();
 
@@ -84,7 +81,7 @@ public class ControllersDetection : MonoBehaviour
 		int totalPointP1 = p1BodyCarParts.playerScore + bonusSwagPointsP1;
 		int totalPointP2 = p2BodyCarParts.playerScore + bonusSwagPointsP2;
 		timerOutEvent.Call(totalPointP1, totalPointP2);
-		showCarPlayersEvent.Call(visualP1, visualP1);
+		showCarPlayersEvent.Call(visualP1, visualP2);
 	}
 	
 	private void OnDisable() {

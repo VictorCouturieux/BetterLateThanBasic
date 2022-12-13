@@ -40,14 +40,31 @@ public class CarController : MonoBehaviour
     private float tireGripFactor;
     private float raycastDistance;
 
+    public bool canMove = false;
+
     private FMOD.Studio.EventInstance fmodEventmotor;
     public FMODUnity.EventReference motor;
     private FMOD.Studio.EventInstance fmodEventdrift;
     public FMODUnity.EventReference drift;
+    
+    [SerializeField] private VoidGameEvent startTimeOutEvent;
 
     //gravity settings
     private const float GRAVITATIONAL_ACCELERATION = 9.81f;
+
+    private void OnEnable() {
+        startTimeOutEvent.AddCallback(StartTimerOut);
+    }
+
+    private void StartTimerOut() {
+        Debug.Log("toto");
+        canMove = true;
+    }
     
+    private void OnDisable() {
+        startTimeOutEvent.RemoveCallback(StartTimerOut);
+    }
+
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>();
@@ -198,7 +215,15 @@ public class CarController : MonoBehaviour
 
     
     //reading player Input with the Unity New Input System
-    private void OnMoveForward(InputValue value) => forwardInput = value.Get<float>();
-    private void OnMoveRight(InputValue value) => rightInput = value.Get<float>();
-    
+    private void OnMoveForward(InputValue value) {
+        if (canMove) {
+            forwardInput = value.Get<float>();
+        }
+    }
+
+    private void OnMoveRight(InputValue value) {
+        if (canMove) {
+            rightInput = value.Get<float>();
+        }
+    }
 }
