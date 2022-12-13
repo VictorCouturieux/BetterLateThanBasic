@@ -40,6 +40,8 @@ public class BodyCarPartsManager : MonoBehaviour
                         int rnd = Random.Range(0, addedBodyCarParts.Count);
                         addedBodyCarParts[rnd].transform.DetachChildren();
                         addedBodyCarParts[rnd].GetComponent<Rigidbody>().AddForce(Vector3.up * 50);
+                        Destroy( addedBodyCarParts[rnd],2.5f);
+                        
                         for (int i = 0; i < addedBodyCarParts.Count; i++)
                         {
                             if (addedBodyCarParts[i] == addedBodyCarParts[rnd])
@@ -53,7 +55,7 @@ public class BodyCarPartsManager : MonoBehaviour
                     }
                 }
             }
-            else if (collision.transform.CompareTag("BodyCarPart") &&
+            else if (collision.transform.CompareTag("Barrier") &&
                      carRigidbody.velocity.magnitude >= carSensibilityToHit)
             {
                 if (addedBodyCarParts.Count > 0)
@@ -61,6 +63,8 @@ public class BodyCarPartsManager : MonoBehaviour
                     int rnd = Random.Range(0, addedBodyCarParts.Count);
                     addedBodyCarParts[rnd].transform.DetachChildren();
                     addedBodyCarParts[rnd].GetComponent<Rigidbody>().AddForce(Vector3.up * 50);
+                    Destroy( addedBodyCarParts[rnd],2.5f);
+
                     for (int i = 0; i < addedBodyCarParts.Count; i++)
                     {
                         if (addedBodyCarParts[i] == addedBodyCarParts[rnd])
@@ -80,7 +84,8 @@ public class BodyCarPartsManager : MonoBehaviour
     {
         if (other.transform.CompareTag("BodyCarPart"))
         {
-            //attach the body car part the the car
+            //trigger a loot box
+            other.GetComponent<BodyCarCollectibleSpawner>().OnCollisionWithCar();
             var currentCollectibleSpawner = other.GetComponent<BodyCarCollectibleSpawner>();
             bool isAlreadyOnCar = false;
 

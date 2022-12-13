@@ -61,6 +61,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBodyCarPartRandom: 0
   forcedLoot: {fileID: 11400000, guid: af498b5970bbc9b4ea5b085efbf2d495, type: 2}
+  isReusable: 1
+  delayToReappear: 1
   bodyCarParts:
   - {fileID: 243748175175069958, guid: 6e6c0d03394ad374e86d4a02fd4623b4, type: 3}
   - {fileID: 3981616212947842330, guid: acf75dc842299b24f8048bef2c287eec, type: 3}
