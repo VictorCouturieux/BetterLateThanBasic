@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
@@ -36,6 +37,9 @@ public class BodyCarPartsManager : MonoBehaviour
             {
                 if (otherCarMagnitude - myMagnitude >= carSensibilityToHit / 2)
                 {
+                    //vibrate a lot the gamepad when player hit another car
+                    StartCoroutine(StartAndStopVibration(.5f, 1f));
+                    
                     if (addedBodyCarParts.Count > 0)
                     {
                         int rnd = Random.Range(0, addedBodyCarParts.Count);
@@ -59,6 +63,9 @@ public class BodyCarPartsManager : MonoBehaviour
             else if (collision.transform.CompareTag("Barrier") &&
                      carRigidbody.velocity.magnitude >= carSensibilityToHit)
             {
+                //vibrate a lot the gamepad when player hit a fence
+                StartCoroutine(StartAndStopVibration(.5f, 1f));
+                
                 if (addedBodyCarParts.Count > 0)
                 {
                     int rnd = Random.Range(0, addedBodyCarParts.Count);
@@ -85,11 +92,8 @@ public class BodyCarPartsManager : MonoBehaviour
     {
         if (other.transform.CompareTag("BodyCarPart"))
         {
-            //TEST
-            
-            Gamepad.current.SetMotorSpeeds(.0f,1f);
-            
-            //END TEST
+            //vibrate a little the gamepad when player drive on a collectible
+            StartCoroutine(StartAndStopVibration(1f, .25f));
             
             //trigger a loot box
             other.GetComponent<BodyCarCollectibleSpawner>().OnCollisionWithCar();
@@ -122,5 +126,12 @@ public class BodyCarPartsManager : MonoBehaviour
                     nunberOfEachBodyCarPart[i]++;
             }
         }
+    }
+
+    IEnumerator StartAndStopVibration(float lowF, float highF)
+    {
+        Gamepad.current.SetMotorSpeeds(lowF,highF);
+        yield return new WaitForSeconds(.3f);
+        Gamepad.current.SetMotorSpeeds(0,0);
     }
 }
