@@ -1440,6 +1440,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 984896464}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &110060712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2689762868971297079, guid: 3b479e9a74ddc6d4eb292e1c1ce699d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1475141253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &116847332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1599,6 +1605,82 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 119629435}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &123828926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123828929}
+  - component: {fileID: 123828928}
+  - component: {fileID: 123828927}
+  m_Layer: 0
+  m_Name: FMOD 2D Listener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &123828927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123828926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1937304810
+      Data2: 1256834415
+      Data3: -1267123556
+      Data4: -661434450
+    Path: event:/Music/Main Music
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &123828928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123828926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+--- !u!4 &123828929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123828926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24, y: 125, z: 207.06464}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &125180402
 Mesh:
   m_ObjectHideFlags: 0
@@ -7491,6 +7573,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarPlayer 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Path
+      value: event:/Laguna/Drift/Drift P2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Path
+      value: event:/Laguna/Motor/Motor P2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Guid.Data1
+      value: -394076819
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Guid.Data2
+      value: 1118677726
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Guid.Data3
+      value: -317259886
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Guid.Data4
+      value: -2119506191
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Guid.Data1
+      value: 57050239
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Guid.Data2
+      value: 1115598182
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Guid.Data3
+      value: 729054101
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Guid.Data4
+      value: 663830639
+      objectReference: {fileID: 0}
     - target: {fileID: 1095938440291879530, guid: 1a9ae1c4152f91c48baa056089214339,
         type: 3}
       propertyPath: m_RootOrder
@@ -7560,6 +7692,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 494782221}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &494782224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494782223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 311233599
+      Data2: 1097544051
+      Data3: -2100777599
+      Data4: -1105455304
+    Path: event:/Laguna/Collision
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &500111529 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 008bce9f05840c94ab582b563a857f2b,
@@ -20311,6 +20473,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1475141253}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1475141255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110060712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: 1218625819
+      Data2: 1184408672
+      Data3: 534490507
+      Data4: -749901656
+    Path: event:/UI/Finish
+  Event: 
+  PlayEvent: 3
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &1479130374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7199265784088801963, guid: afbe595f39ee21d46b93bd977d141050,
@@ -22271,6 +22463,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarPlayer 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Path
+      value: event:/Laguna/Drift/Drift P1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Path
+      value: event:/Laguna/Motor/Motor P1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Guid.Data1
+      value: 1476314661
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Guid.Data2
+      value: 1190395420
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Guid.Data3
+      value: 2139825281
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: drift.Guid.Data4
+      value: -1079055725
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Guid.Data1
+      value: -1389135585
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Guid.Data2
+      value: 1097970759
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Guid.Data3
+      value: -801176182
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: motor.Guid.Data4
+      value: 638579074
+      objectReference: {fileID: 0}
     - target: {fileID: 1095938440291879530, guid: 1a9ae1c4152f91c48baa056089214339,
         type: 3}
       propertyPath: m_RootOrder
@@ -22340,6 +22582,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1642131095}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1642131098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642131097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 311233599
+      Data2: 1097544051
+      Data3: -2100777599
+      Data4: -1105455304
+    Path: event:/Laguna/Collision
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &1642194086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7199265784088801963, guid: afbe595f39ee21d46b93bd977d141050,
@@ -31054,7 +31326,7 @@ MonoBehaviour:
   bonusWhenFirst: 6
   bonusWhenSecond: 3
   errorGamepadNotConnected: {fileID: 4838565617900953724}
-  mappedWithGamepads: 1
+  mappedWithGamepads: 0
   arcadeTimer: {fileID: 4838565618831855976}
   startTimeOutEvent: {fileID: 11400000, guid: 9fa2f28e9106ace40a1fdb7c0050f0a6, type: 2}
   carRaceFinishEvent: {fileID: 11400000, guid: 71923818563abd74196fb291916b9a39, type: 2}
