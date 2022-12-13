@@ -38,7 +38,7 @@ public class BodyCarPartsManager : MonoBehaviour
                 if (otherCarMagnitude - myMagnitude >= carSensibilityToHit / 2)
                 {
                     //vibrate a lot the gamepad when player hit another car
-                    StartCoroutine(StartAndStopVibration(.5f, 1f));
+                    //StartCoroutine(StartAndStopVibration(.5f, 1f));
                     
                     if (addedBodyCarParts.Count > 0)
                     {
@@ -64,7 +64,7 @@ public class BodyCarPartsManager : MonoBehaviour
                      carRigidbody.velocity.magnitude >= carSensibilityToHit)
             {
                 //vibrate a lot the gamepad when player hit a fence
-                StartCoroutine(StartAndStopVibration(.5f, 1f));
+                //StartCoroutine(StartAndStopVibration(.5f, 1f));
                 
                 if (addedBodyCarParts.Count > 0)
                 {
@@ -93,7 +93,7 @@ public class BodyCarPartsManager : MonoBehaviour
         if (other.transform.CompareTag("BodyCarPart"))
         {
             //vibrate a little the gamepad when player drive on a collectible
-            StartCoroutine(StartAndStopVibration(1f, .25f));
+            //StartCoroutine(StartAndStopVibration(1f, .25f));
             
             //trigger a loot box
             other.GetComponent<BodyCarCollectibleSpawner>().OnCollisionWithCar();
@@ -128,10 +128,10 @@ public class BodyCarPartsManager : MonoBehaviour
         }
     }
 
-    IEnumerator StartAndStopVibration(float lowF, float highF)
+    /*IEnumerator StartAndStopVibration(float lowF, float highF)
     {
         Gamepad.current.SetMotorSpeeds(lowF,highF);
         yield return new WaitForSeconds(.3f);
         Gamepad.current.SetMotorSpeeds(0,0);
-    }
+    }*/
 }
