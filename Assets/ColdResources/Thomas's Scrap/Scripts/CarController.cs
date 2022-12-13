@@ -33,13 +33,18 @@ public class CarController : MonoBehaviour
     
     [Space] [Header("Others setup")] 
     [SerializeField] private float carMass = 30;
-    
+
     private Rigidbody carRigidbody;
     private float forwardInput;
     private float rightInput;
     private float tireGripFactor;
     private float raycastDistance;
-    
+
+    private FMOD.Studio.EventInstance fmodEventmotor;
+    public FMODUnity.EventReference motor;
+    private FMOD.Studio.EventInstance fmodEventdrift;
+    public FMODUnity.EventReference drift;
+
     //gravity settings
     private const float GRAVITATIONAL_ACCELERATION = 9.81f;
     
@@ -48,6 +53,12 @@ public class CarController : MonoBehaviour
         carRigidbody = GetComponent<Rigidbody>();
         if (tireTransforms.Count < 1) Debug.Log("tireTransforms is empty, please assign tires !");
         raycastDistance = springOffsef + 1;
+
+        fmodEventmotor = FMODUnity.RuntimeManager.CreateInstance("event:/Laguna/Motor/Motor P1");
+        fmodEventmotor.start();
+
+        fmodEventdrift = FMODUnity.RuntimeManager.CreateInstance("event:/Laguna/Drift/Drift P1");
+        fmodEventdrift.start();
     }
 
     private void Update()
@@ -123,7 +134,10 @@ public class CarController : MonoBehaviour
                 
                 //FMOD SOUND INTEGRATION STEERING/DRIFT value -> (steeringDir * steeringVel).magnitude
                 float FmodDrift = (steeringDir * steeringVel).magnitude;
-                if (i == 0) ; //place your code here before ';'
+                if (i == 0)
+                {
+                    fmodEventdrift.setParameterByName("Drift Amount", FmodDrift);
+                }; //place your code here before ';'
             }
             
             //acceleration / braking
@@ -152,7 +166,10 @@ public class CarController : MonoBehaviour
                     
                     //FMOD SOUND INTEGRATION ACCELERATION/SPEED value -> (accelDir * aviableTorque * speed).magnitude
                     float FmodAccel = (accelDir * aviableTorque * speed).magnitude;
-                    if (i == 0) ; //place your code here before ';'
+                    if (i == 0)
+                    {
+                        fmodEventmotor.setParameterByName("Speed", FmodAccel);
+                    }; //place your code here before ';'
                 }
                 else
                 {
