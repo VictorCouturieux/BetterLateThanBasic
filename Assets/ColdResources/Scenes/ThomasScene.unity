@@ -1067,10 +1067,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8665130179961758242, guid: c3059abf6b93eae47844e35f701444eb,
+        type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8665130179961758253, guid: c3059abf6b93eae47844e35f701444eb,
         type: 3}
       propertyPath: m_Name
       value: CarPlayer 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665130179961758253, guid: c3059abf6b93eae47844e35f701444eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3059abf6b93eae47844e35f701444eb, type: 3}
@@ -1430,6 +1440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CollisionDetection
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095938440291879529, guid: 1a9ae1c4152f91c48baa056089214339,
+        type: 3}
+      propertyPath: canMove
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1095938440291879530, guid: 1a9ae1c4152f91c48baa056089214339,
         type: 3}

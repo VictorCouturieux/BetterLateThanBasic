@@ -336,14 +336,14 @@ MonoBehaviour:
   - {fileID: 2862311185075009646}
   - {fileID: 2862311185181979672}
   - {fileID: 2862311185153684379}
-  springStrength: 200
+  springStrength: 150
   springDamper: 3
   springOffsef: 0.65
-  frontGripFactor: 80
-  rearGripFactor: 80
+  frontGripFactor: 85
+  rearGripFactor: 85
   tireMass: 0.01
-  carTopSpeed: 125
-  speed: 40
+  carTopSpeed: 50
+  acceleration: 1400
   powerCurve:
     serializedVersion: 2
     m_Curve:
@@ -378,7 +378,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   drag: 2
-  maxWheelAngle: 30
+  maxWheelAngle: 15
   carMass: 50
   canMove: 0
   motor:
@@ -439,7 +439,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2862311186174047614
 MonoBehaviour:
   m_ObjectHideFlags: 0

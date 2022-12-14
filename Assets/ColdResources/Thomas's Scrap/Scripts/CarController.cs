@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
     
     [Space] [Header("Suspension setup")]
     [SerializeField] private float springStrength = 50;
-    [SerializeField] private float springDamper = 5;
+    [SerializeField] private float springDamper = 3;
     [SerializeField] private float springOffsef = .65f;
 
     [Space] [Header("Steering setup")] 
@@ -24,12 +24,12 @@ public class CarController : MonoBehaviour
 
     [Space] [Header("Acceleration setup")] 
     [SerializeField] private float carTopSpeed = 50;
-    [SerializeField] private float speed = 20;
+    [SerializeField] private float acceleration = 100;
     [SerializeField] private AnimationCurve powerCurve;
     [SerializeField] private float drag = 2;
 
     [Space] [Header("Rotation angle setup")] 
-    [SerializeField] private float maxWheelAngle = 30;
+    [SerializeField] private float maxWheelAngle = 15;
     
     [Space] [Header("Others setup")] 
     [SerializeField] private float carMass = 30;
@@ -57,7 +57,6 @@ public class CarController : MonoBehaviour
     }
 
     private void StartTimerOut() {
-        Debug.Log("toto");
         canMove = true;
     }
     
@@ -137,7 +136,7 @@ public class CarController : MonoBehaviour
                 float steeringVel = Vector3.Dot(steeringDir, tireWorldVel);
                 
                 //the change in velocity that we're looking for is -steeringVel * gripFactor
-                //gripFactor is in range 0 -1, 0 means no grip, 1 means full grip
+                //gripFactor is in range 0-1, 0 means no grip, 1 means full grip
                 float desiredeVelChange = -steeringVel * (tireGripFactor / 100);
                 
                 //turn change in velocity into an acceleration (acceleration = change in velocity / time)
@@ -151,10 +150,7 @@ public class CarController : MonoBehaviour
                 
                 //FMOD SOUND INTEGRATION STEERING/DRIFT value -> (steeringDir * steeringVel).magnitude
                 float FmodDrift = (steeringDir * steeringVel).magnitude;
-                if (i == 0)
-                {
-                    fmodEventdrift.setParameterByName("Drift Amount", FmodDrift);
-                }; //place your code here before ';'
+                if (i == 0) fmodEventdrift.setParameterByName("Drift Amount", FmodDrift);
             }
             
             //acceleration / braking
@@ -168,25 +164,23 @@ public class CarController : MonoBehaviour
                 if (Mathf.Abs(forwardInput) > 0)
                 {
                     carRigidbody.drag = .3f;
+                    
                     //forward speed of the car (in the direction of driving)
                     float carSpeed = Vector3.Dot(transform.forward, carRigidbody.velocity);
 
                     //normalized car speed
                     float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(carSpeed) / carTopSpeed);
 
-                    //aviable torque
-                    float aviableTorque = powerCurve.Evaluate(normalizedSpeed) * forwardInput;
+                    //available torque
+                    float availableTorque = powerCurve.Evaluate(normalizedSpeed) * forwardInput;
 
-                    carRigidbody.AddForceAtPosition(accelDir * aviableTorque * speed, tireTransforms[i].position);
+                    carRigidbody.AddForceAtPosition(accelDir * availableTorque * acceleration * Time.deltaTime, tireTransforms[i].position);
 
                     Debug.DrawRay(tireTransforms[i].position, accelDir * carSpeed, Color.blue);
                     
                     //FMOD SOUND INTEGRATION ACCELERATION/SPEED value -> (accelDir * aviableTorque * speed).magnitude
-                    float FmodAccel = (accelDir * (normalizedSpeed * forwardInput) * speed).magnitude;
-                    if (i == 0)
-                    {
-                        fmodEventmotor.setParameterByName("Speed", FmodAccel);
-                    }; //place your code here before ';'
+                    float FmodAccel = (accelDir * (normalizedSpeed * forwardInput) * acceleration * Time.deltaTime).magnitude;
+                    if (i == 0) fmodEventmotor.setParameterByName("Speed", FmodAccel);
                 }
                 else
                 {
