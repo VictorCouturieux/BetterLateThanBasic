@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
 		// startFadeInEvent.Call();
 		Destroy(carPlayer1);
 		Destroy(carPlayer2);
-		SceneManager.LoadScene(gameScene);
+		SceneManager.LoadScene("loadScene");
 	}
 	
 	private void OnMainMenuGame() {

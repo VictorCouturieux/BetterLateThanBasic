@@ -15,10 +15,10 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 8
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.6
   response:
     m_OverrideState: 0
     m_Value: 0.8
@@ -40,7 +40,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.395
+    m_Value: 0.18
   xMultiplier:
     m_OverrideState: 1
     m_Value: 0.9
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   threshold:
     m_OverrideState: 1
     m_Value: 0.9
@@ -114,6 +114,7 @@ MonoBehaviour:
   - {fileID: -2149980085382696060}
   - {fileID: 1959711909309947923}
   - {fileID: 8008845311308363587}
+  - {fileID: 9036849069523676971}
 --- !u!114 &1881579288749618558
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -145,7 +146,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.222
+    m_Value: 0.143
 --- !u!114 &8008845311308363587
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -179,17 +180,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   color:
-    m_OverrideState: 0
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0.08445597, b: 1, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.32
+    m_Value: 0.142
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.224
+    m_OverrideState: 1
+    m_Value: 0.361
   rounded:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &9036849069523676971
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: 
+  active: 1
+  shadows:
+    m_OverrideState: 1
+    m_Value: {x: 0.92375207, y: 0.9268925, z: 1, w: 0.14084508}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 0.9154138, y: 1, z: 0.84199744, w: 0.14084508}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0.9545135, z: 0.8180543, w: 0.2816897}
+  shadowsStart:
+    m_OverrideState: 1
+    m_Value: 0
+  shadowsEnd:
+    m_OverrideState: 1
+    m_Value: 0.3
+  highlightsStart:
+    m_OverrideState: 1
+    m_Value: 0.55
+  highlightsEnd:
     m_OverrideState: 1
     m_Value: 1

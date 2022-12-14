@@ -209,14 +209,12 @@ public class ControllersDetection : MonoBehaviour
 	
 	private void EnableControlDevice(PlayerInput playerInput) {
 		if (playerInput.devices.Count >= 1) {
-			Debug.Log("EnableDevice");
 			InputSystem.EnableDevice(playerInput.devices[0]);
 		}
 	}
 	
 	private void DisableControlDevice(PlayerInput playerInput) {
 		if (playerInput.devices.Count >= 1) {
-			Debug.Log("DisableDevice");
 			InputSystem.DisableDevice(playerInput.devices[0]);
 		}
 	}

@@ -24,35 +24,6 @@ public class BodyCarPartsManager : MonoBehaviour
         carRigidbody = transform.GetComponent<Rigidbody>();
         for (int i = 1; i < 5; i++) tireArrray[i - 1] = transform.GetChild(0).transform.GetChild(i).gameObject;
     }
-
-    private void LoseARandomBodyCarPArt()
-    {
-        //vibrate a lot the gamepad when player hit a fence
-        //StartCoroutine(StartAndStopVibration(.5f, 1f));
-
-        if (addedBodyCarParts.Count > 0)
-        {
-            int rnd = Random.Range(0, addedBodyCarParts.Count);
-            addedBodyCarParts[rnd].transform.DetachChildren();
-            addedBodyCarParts[rnd].GetComponent<Rigidbody>().AddForce(Vector3.up * 50);
-            Destroy(addedBodyCarParts[rnd], 2.5f);
-
-            if (addedBodyCarParts[rnd].name.Contains("Wheel"))
-                for (int i = 0; i < tireArrray.Length; i++)
-                    tireArrray[i].SetActive(false);
-
-            for (int i = 0; i < addedBodyCarParts.Count; i++)
-            {
-                if (addedBodyCarParts[i] == addedBodyCarParts[rnd])
-                {
-                    playerScore -= 500 * nunberOfEachBodyCarPart[i];
-                    nunberOfEachBodyCarPart[i] = 0;
-                }
-            }
-
-            addedBodyCarParts.RemoveAt(rnd);
-        }
-    }
     
     private void OnCollisionEnter(Collision collision)
     {
@@ -121,4 +92,33 @@ public class BodyCarPartsManager : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         Gamepad.current.SetMotorSpeeds(0,0);
     }*/
+    
+    private void LoseARandomBodyCarPArt()
+    {
+        //vibrate a lot the gamepad when player hit a fence
+        //StartCoroutine(StartAndStopVibration(.5f, 1f));
+
+        if (addedBodyCarParts.Count > 0)
+        {
+            int rnd = Random.Range(0, addedBodyCarParts.Count);
+            addedBodyCarParts[rnd].transform.DetachChildren();
+            addedBodyCarParts[rnd].GetComponent<Rigidbody>().AddForce(Vector3.up * 50);
+            Destroy(addedBodyCarParts[rnd], 2.5f);
+
+            if (addedBodyCarParts[rnd].name.Contains("Wheel"))
+                for (int i = 0; i < tireArrray.Length; i++)
+                    tireArrray[i].SetActive(true);
+
+            for (int i = 0; i < addedBodyCarParts.Count; i++)
+            {
+                if (addedBodyCarParts[i] == addedBodyCarParts[rnd])
+                {
+                    playerScore -= 500 * nunberOfEachBodyCarPart[i];
+                    nunberOfEachBodyCarPart[i] = 0;
+                }
+            }
+
+            addedBodyCarParts.RemoveAt(rnd);
+        }
+    }
 }
