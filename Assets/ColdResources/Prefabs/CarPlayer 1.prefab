@@ -291,35 +291,26 @@ MonoBehaviour:
   - {fileID: 8665130181396082480}
   - {fileID: 8665130180962083654}
   - {fileID: 8665130181051196613}
-  springStrength: 50
+  springStrength: 200
   springDamper: 3
   springOffsef: 0.65
-  frontGripFactor: 40
-  rearGripFactor: 40
+  frontGripFactor: 80
+  rearGripFactor: 80
   tireMass: 0.01
-  carTopSpeed: 50
-  speed: 20
+  carTopSpeed: 125
+  speed: 40
   powerCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
-      inSlope: 0.043722294
-      outSlope: 0.043722294
+      value: 0.3
+      inSlope: 1.2165656
+      outSlope: 1.2165656
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.46115288
-    - serializedVersion: 3
-      time: 0.3
-      value: 1
-      inSlope: -0.0060315137
-      outSlope: -0.0060315137
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.23809521
+      outWeight: 0.15071282
     - serializedVersion: 3
       time: 0.6
       value: 1
@@ -331,7 +322,7 @@ MonoBehaviour:
       outWeight: 0.18354753
     - serializedVersion: 3
       time: 1
-      value: 0.30164796
+      value: 0.6
       inSlope: 0.015435573
       outSlope: 0.015435573
       tangentMode: 0
@@ -342,7 +333,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   drag: 2
-  maxWheelAngle: 30
+  maxWheelAngle: 15
   carMass: 50
   canMove: 0
   motor:
