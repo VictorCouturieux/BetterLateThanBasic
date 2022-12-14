@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 		if (SceneManager.GetActiveScene().name == gameScene) {
 			scorePlayer1 = 0;
 			scorePlayer2 = 0;
+			
 			// carPlayer1 = null;
 			// carPlayer2 = null;
 		}
@@ -111,11 +112,15 @@ public class GameManager : MonoBehaviour
 
 	private void OnRestartGame() {
 		// startFadeInEvent.Call();
+		Destroy(carPlayer1);
+		Destroy(carPlayer2);
 		SceneManager.LoadScene(gameScene);
 	}
 	
 	private void OnMainMenuGame() {
 		// startFadeInEvent.Call();
+		Destroy(carPlayer1);
+		Destroy(carPlayer2);
 		SceneManager.LoadScene(mainMenuScene);
 	}
 
